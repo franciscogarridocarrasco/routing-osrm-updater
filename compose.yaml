@@ -21,3 +21,4 @@ services:
     working_dir: /data
     volumes:
       - ${UPDATER_DATA_PATH:-./data}:/data
+      - ./config/profiles/car-distance.lua:/opt/car.lua:ro
