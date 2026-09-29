@@ -1,0 +1,7 @@
+# name|url
+france|https://download.geofabrik.de/europe/france-latest.osm.pbf
+spain|https://download.geofabrik.de/europe/spain-latest.osm.pbf
+portugal|https://download.geofabrik.de/europe/portugal-latest.osm.pbf
+italy|https://download.geofabrik.de/europe/italy-latest.osm.pbf
+poland|https://download.geofabrik.de/europe/poland-latest.osm.pbf
+romania|https://download.geofabrik.de/europe/romania-latest.osm.pbf

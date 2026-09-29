@@ -1,0 +1,23 @@
+name: ${COMPOSE_PROJECT_NAME:-routing-osrm-updater}
+
+services:
+  data-tools:
+    build:
+      context: ${UPDATER_WORKSPACE_PATH:-.}
+      dockerfile: ${UPDATER_DOCKERFILE_PATH:-docker/data-tools/Dockerfile}
+    image: routing-osrm-data-tools:local
+    profiles:
+      - tools
+    working_dir: /workspace
+    volumes:
+      - ${UPDATER_WORKSPACE_PATH:-.}:/workspace
+    environment:
+      TZ: UTC
+
+  osrm-builder:
+    image: ${OSRM_IMAGE:-ghcr.io/project-osrm/osrm-backend:v26.6.5-debian}
+    profiles:
+      - tools
+    working_dir: /data
+    volumes:
+      - ${UPDATER_DATA_PATH:-./data}:/data

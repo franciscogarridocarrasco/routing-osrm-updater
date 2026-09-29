@@ -1,0 +1,28 @@
+# OSM datasets and working files
+data/work/raw/*
+data/work/merged/*
+data/releases/*
+
+!data/work/raw/.gitkeep
+!data/work/merged/.gitkeep
+!data/releases/.gitkeep
+
+# Local configuration
+.env
+
+# Logs and temporary files
+*.log
+*.tmp
+.DS_Store
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Docker build cache
+docker/.buildx-cache/
+docker/.buildx-cache-new/
+
+# Test output
+test-results/
