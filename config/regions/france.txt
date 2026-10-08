@@ -1,0 +1,2 @@
+# name|url
+france|https://download.geofabrik.de/europe/france-latest.osm.pbf

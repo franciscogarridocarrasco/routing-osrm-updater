@@ -1,0 +1,2 @@
+# name|url
+portugal|https://download.geofabrik.de/europe/portugal-latest.osm.pbf

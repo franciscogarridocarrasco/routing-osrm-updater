@@ -1,0 +1,2 @@
+# name|url
+italy|https://download.geofabrik.de/europe/italy-latest.osm.pbf

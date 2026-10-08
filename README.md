@@ -9,6 +9,7 @@ runtime externo para validar cambios.
 
 - Docker
 - Docker Compose (v2)
+- Google Cloud CLI (`gcloud`) con autenticación y permisos de escritura en el bucket
 - GNU Make
 - Bash
 - Python 3
@@ -26,6 +27,7 @@ scripts/
   merge.sh                # fusiona múltiples PBF
   build-graph.sh          # ejecuta osrm-extract y contract/partition según algoritmo
   publish-dataset.sh      # publica versión bajo data/releases
+  release-country.sh      # descarga, construye y publica un país
   activate-dataset.sh     # actualiza OSRM_DATASET_VERSION en .env externo
   smoke-test.sh           # valida /route y /table contra runtime
 docker/
@@ -122,11 +124,28 @@ make graph-files                # lista ficheros OSRM generados
 ### Publicación y versiones
 
 ```bash
+./scripts/release-country.sh france
+# → descarga, construye y publica Francia sin activar el runtime
+./scripts/release-country.sh france 20261008-france
+# → permite especificar la versión de la release
 make publish-local              # publica como 'local' (reemplazable)
 make publish-version DATASET_VERSION=<v>    # publica versión inmutable
 make list-versions              # lista versiones publicadas
 make release-files              # lista ficheros de versión actual
 ```
+
+`release-country.sh` requiere `config/regions/<país>.txt` con exactamente una
+entrada `país|URL_HTTPS`, por ejemplo:
+
+```text
+# name|url
+france|https://download.geofabrik.de/europe/france-latest.osm.pbf
+```
+
+Los datos de trabajo se guardan en `data/work/countries/<país>/` y la release
+se publica en `data/releases/<versión>` y se copia a
+`gs://adeo-ccdp-delta-routing-engine-prep/<versión>/` mediante `gcloud storage`.
+El script no activa ningún runtime.
 
 ### Update completo
 
