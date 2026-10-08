@@ -1,7 +1,5 @@
 # OSM datasets and working files
-data/work/raw/*
-data/work/merged/*
-data/releases/*
+data/*
 
 !data/work/raw/.gitkeep
 !data/work/merged/.gitkeep
